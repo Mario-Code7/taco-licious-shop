@@ -3,8 +3,8 @@ package com.pluralsight.tacos.model;
 public class ChipsSalsa extends MenuItem {
     private String salsaType;
 
-    public ChipsSalsa(double price, String name, String salsaType) {
-        super(price, name);
+    public ChipsSalsa(String name, double price, String salsaType) {
+        super(name, price);
         this.salsaType = salsaType;
     }
 
@@ -18,6 +18,6 @@ public class ChipsSalsa extends MenuItem {
 
     @Override
     public String getDescription() {
-        return "";
+        return getName() + " | Salsa: " + getSalsaType() + " | Price: $" + getPrice();
     }
 }

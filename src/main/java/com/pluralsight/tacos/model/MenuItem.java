@@ -3,12 +3,12 @@ package com.pluralsight.tacos.model;
 import com.pluralsight.tacos.data.PricedItem;
 
 public abstract class  MenuItem implements PricedItem {
-    private double price;
     private String name;
+    private double price;
 
-    public MenuItem(double price, String name) {
-        this.price = price;
+    public MenuItem(String name, double price) {
         this.name = name;
+        this.price = price;
     }
 
     @Override

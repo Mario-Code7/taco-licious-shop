@@ -4,8 +4,8 @@ public class Drink extends MenuItem {
     private String size;
     private String flavor;
 
-    public Drink(double price, String name, String size, String flavor) {
-        super(price, name);
+    public Drink(String name, double price, String size, String flavor) {
+        super(name, price);
         this.size = size;
         this.flavor = flavor;
     }
@@ -29,6 +29,6 @@ public class Drink extends MenuItem {
 
     @Override
     public String getDescription() {
-        return "";
+        return getName() + " | Flavor: " + getFlavor() + " | Price: $" + getPrice();
     }
 }

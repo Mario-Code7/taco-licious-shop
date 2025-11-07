@@ -1,19 +1,20 @@
 package com.pluralsight.tacos.model;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Taco extends MenuItem {
     private String size;
     private String shell;
     private boolean deepFried;
-    private List<String> Toppings;
+    private List<String> toppings;
 
-    public Taco(double price, String name, String size, String shell, boolean deepFried, List<String> toppings) {
-        super(price, name);
+    public Taco(String name, double price, String size, String shell, boolean deepFried, List<String> toppings) {
+        super(name, price);
         this.size = size;
         this.shell = shell;
         this.deepFried = deepFried;
-        Toppings = toppings;
+        this.toppings = toppings;
     }
 
     public String getSize() {
@@ -41,11 +42,11 @@ public class Taco extends MenuItem {
     }
 
     public List<String> getToppings() {
-        return Toppings;
+        return toppings;
     }
 
     public void setToppings(List<String> toppings) {
-        Toppings = toppings;
+        toppings = toppings;
     }
 
     @Override
