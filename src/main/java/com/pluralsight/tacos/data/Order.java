@@ -9,6 +9,5 @@ public class Order {
     private List<MenuItem> items = new ArrayList<>();
 
     public void addItem(MenuItem item) {
-
     }
 }
