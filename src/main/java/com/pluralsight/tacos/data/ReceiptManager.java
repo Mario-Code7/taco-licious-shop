@@ -1,6 +1,5 @@
 package com.pluralsight.tacos.data;
 
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
