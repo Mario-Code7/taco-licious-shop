@@ -42,5 +42,8 @@ public class Order {
             System.out.println("Total: $" + getTotalPrice());
         }
     }
+    public boolean isEmpty() {
+        return items.isEmpty();
+    }
 
 }

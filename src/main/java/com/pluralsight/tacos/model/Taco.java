@@ -1,6 +1,7 @@
 package com.pluralsight.tacos.model;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Taco extends MenuItem {
     private String size;
@@ -50,6 +51,7 @@ public class Taco extends MenuItem {
 
     @Override
     public String getDescription() {
-        return "";
+        String topping = toppings.stream().collect(Collectors.joining(", "));
+        return String.format("%s Taco [%s,%s, Deep Fried: %s] - $%.2f", getName(), size, shell, deepFried ? "Yes" : "No", getPrice()) + (toppings.isEmpty() ? "" : "\nToppings: " + toppings);
     }
 }
