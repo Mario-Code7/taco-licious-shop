@@ -32,16 +32,24 @@ public class Order {
     }
 
     public void displayOrder() {
-        if (items.isEmpty()) {
-            System.out.println("Your order is empty!");
-        } else {
-            System.out.println("\n ***** Order Summary *****");
-            items.stream()
-                    .map(MenuItem::getDescription)
-                    .forEach(System.out::println);
-            System.out.println("Total: $" + getTotalPrice());
-        }
+        System.out.println(getOrderDetails());
+//        if (items.isEmpty()) {
+//            System.out.println("Your order is empty!");
+//        } else {
+//            System.out.println("\n ***** Order Summary *****");
+//            items.stream()
+//                    .map(MenuItem::getDescription)
+//                    .forEach(System.out::println);
+//            System.out.println("Total: $" + getTotalPrice());
     }
+
+    public String getOrderDetails() {
+        StringBuilder stringBuilder = new StringBuilder();
+        items.forEach(item -> stringBuilder.append(item).append("\n"));
+        stringBuilder.append("\nTotal: $").append(String.format("%.2f", getTotalPrice()));
+        return stringBuilder.toString();
+    }
+
     public boolean isEmpty() {
         return items.isEmpty();
     }

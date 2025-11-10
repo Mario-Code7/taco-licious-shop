@@ -27,4 +27,9 @@ public abstract class  MenuItem implements PricedItem {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return name + " -$" + String.format("%.2f", getPrice());
+    }
 }

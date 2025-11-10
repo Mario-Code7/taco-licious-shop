@@ -16,6 +16,39 @@ public class Taco extends MenuItem {
         this.deepFried = deepFried;
         this.toppings = toppings;
     }
+    @Override
+    public double getPrice() {
+        double price = switch (size.toLowerCase()) {
+            case "single" -> 3.50;
+            case "3-taco" -> 9.00;
+            case "burrito" -> 8.50;
+            default -> getPrice();
+        };
+        for (String topping : toppings) {
+            if (topping.equalsIgnoreCase("carne asada") ||
+            topping.equalsIgnoreCase("al pastor")||
+            topping.equalsIgnoreCase("carnitas")||
+            topping.equalsIgnoreCase("pollo")||
+            topping.equalsIgnoreCase("chorizo")||
+            topping.equalsIgnoreCase("pescado")) {
+                price += switch (size.toLowerCase()) {
+                    case "single" -> 1.00;
+                    case "3-taco" -> 2.00;
+                    case "burrito" -> 1.50;
+                    default -> 0;
+                };
+            } else if (topping.toLowerCase().contains("cheese")) {
+                price += switch (size.toLowerCase()) {
+                    case "single" -> 0.75;
+                    case "3-taco" -> 1.50;
+                    case "burrito" -> 2.25;
+                    default -> 0;
+                };
+            }
+        }
+        if (deepFried) price += 1.00;
+        return price;
+    }
 
     public String getSize() {
         return size;
@@ -50,8 +83,7 @@ public class Taco extends MenuItem {
     }
 
     @Override
-    public String getDescription() {
-        String topping = toppings.stream().collect(Collectors.joining(", "));
-        return String.format("%s Taco [%s,%s, Deep Fried: %s] - $%.2f", getName(), size, shell, deepFried ? "Yes" : "No", getPrice()) + (toppings.isEmpty() ? "" : "\nToppings: " + toppings);
+    public String toString() {
+        return "Taco (" + size + ", " + shell + ") - $" + String.format("%.2f", getPrice());
     }
 }

@@ -13,12 +13,12 @@ import java.util.Scanner;
 public class UserInterface {
     private final Scanner myScanner = new Scanner(System.in);
     private Order order;
-    private ReceiptManager receiptManager = new ReceiptManager();
+    private final ReceiptManager receiptManager = new ReceiptManager();
 
 
     public void begin() {
         while(true) {
-            System.out.println("\n**************************");
+            System.out.println("\n****************************");
             System.out.println("      Taco-licious Shop        ");
             System.out.println("****************************");
             System.out.println("1. New Order");
@@ -28,10 +28,14 @@ public class UserInterface {
             int choice = myScanner.nextInt();
             myScanner.nextLine();
 
-            if (choice == 1)
-                break;
-            if (choice == 0)
+            if (choice == 1) {
                 startNewOrder();
+            } else if (choice == 0) {
+                System.out.println("See ya!");
+                return;
+            }else {
+                System.out.println("Invalid choice!");
+            }
         }
     }
 
@@ -86,15 +90,14 @@ public class UserInterface {
 
         List<String>toppings = new ArrayList<>();
         System.out.println("Enter toppings(leave empty to finish");
-        while (true){
-            String topping = myScanner.nextLine();
-            if (topping.isEmpty()) {
-                toppings.add(topping);
-                break;
-            }
+        while (true) {
+            String topping = myScanner.nextLine().trim();
+            if (topping.isEmpty()) break;
+            toppings.add(topping);
         }
         System.out.println("Deep fried Y/N: ");
-        boolean deepFried = myScanner.nextBoolean();
+        String deepFriedChoice = myScanner.nextLine();
+        boolean deepFried = deepFriedChoice.equalsIgnoreCase("Y");
         myScanner.nextLine();
 
         Taco taco = new Taco(name,price,size,shell,deepFried,toppings);
@@ -142,7 +145,11 @@ public class UserInterface {
         System.out.println("Confirm order? (Yes/No)");
         String confirm = myScanner.nextLine();
         if (confirm.equalsIgnoreCase("yes")) {
-            receiptManager.saveReceipt(order);
+            StringBuilder details = new StringBuilder();
+            order.getItems()
+                    .forEach(item -> details.append(item.getDescription()).append("\n"));
+                    details.append("Total: $").append(order.getTotalPrice());
+            receiptManager.saveReceipt(details.toString());
             System.out.println("Order Done! Thanks!");
         } else {
             System.out.println("Order cancelled!");

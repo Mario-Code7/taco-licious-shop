@@ -7,16 +7,14 @@ import java.time.format.DateTimeFormatter;
 
 public class ReceiptManager {
 
-    public void saveReceipt(Order order) {
+    public void saveReceipt(String orderDetails) {
         LocalDateTime now = LocalDateTime.now();
-
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd-hhmmss");
-
-        String fileName = "receipt" + now.format(formatter) + ".txt";
+        String fileName = "receipt-" + now.format(formatter) + ".txt";
 
         try
                 (FileWriter fileWriter = new FileWriter(fileName)) {
-            fileWriter.write(order.
+            fileWriter.write(orderDetails);
             System.out.println("Receipt saved to " + fileName);
         } catch (IOException e) {
             System.out.println("Error saving receipt: " + e.getMessage());
