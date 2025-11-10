@@ -4,10 +4,21 @@ public class Drink extends MenuItem {
     private String size;
     private String flavor;
 
-    public Drink(String name, double price, String size, String flavor) {
-        super(name, price);
+    public Drink(double price, String size, String flavor) {
+        super(price);
         this.size = size;
         this.flavor = flavor;
+    }
+
+
+    @Override
+    public double getPrice() {
+        return switch (size.toLowerCase()) {
+            case "small" -> 2.00;
+            case "medium" -> 2.50;
+            case "large" -> 3.00;
+            default -> 0;
+        };
     }
 
 
@@ -28,7 +39,7 @@ public class Drink extends MenuItem {
     }
 
     @Override
-    public String getDescription() {
-        return getName() + " | Flavor: " + getFlavor() + " | Price: $" + getPrice();
+    public String toString() {
+        return size + " " + flavor + " Drink - $" + String.format("%.2f", getPrice());
     }
 }

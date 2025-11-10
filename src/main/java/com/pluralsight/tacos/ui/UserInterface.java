@@ -43,7 +43,7 @@ public class UserInterface {
         order = new Order();
         int choice;
         do {
-            System.out.println("\n**************************");
+            System.out.println("\n****************************");
             System.out.println("         Food Menu        ");
             System.out.println("****************************");
             System.out.println("1. Add Taco");
@@ -78,60 +78,44 @@ public class UserInterface {
     }
 
     private void addTaco() {
-        System.out.println("Taco Name: ");
-        String name = myScanner.nextLine();
-        System.out.println("Size (Single, 3-taco, burrito): ");
+        System.out.print("Size (Single, 3-taco, burrito): ");
         String size = myScanner.nextLine();
-        System.out.println("Shell(Corn, flour, Hard shell, bowl): ");
+        System.out.print("Shell(Corn, flour, Hard shell, bowl): ");
         String shell = myScanner.nextLine();
-        System.out.println("Price: ");
-        double price = myScanner.nextDouble();
-        myScanner.nextLine();
 
         List<String>toppings = new ArrayList<>();
-        System.out.println("Enter toppings(leave empty to finish");
+        System.out.print("Enter toppings(leave empty to finish): ");
         while (true) {
             String topping = myScanner.nextLine().trim();
             if (topping.isEmpty()) break;
             toppings.add(topping);
         }
-        System.out.println("Deep fried Y/N: ");
-        String deepFriedChoice = myScanner.nextLine();
-        boolean deepFried = deepFriedChoice.equalsIgnoreCase("Y");
-        myScanner.nextLine();
+        System.out.print("Deep fried Y/N: ");
+        boolean deepFried = myScanner.nextLine().equalsIgnoreCase("Y");
 
-        Taco taco = new Taco(name,price,size,shell,deepFried,toppings);
+        Taco taco = new Taco(0.0,size,shell,deepFried,toppings);
         order.addItem(taco);
+
         System.out.println("Taco placed!");
     }
 
     private void addDrink() {
-        System.out.println("Drink Name: ");
-        String name = myScanner.nextLine();
-        System.out.println("Size (Small, Medium, Large): ");
+        System.out.print("Size (Small, Medium, Large): ");
         String size = myScanner.nextLine();
-        System.out.println("What Flavour: ");
+        System.out.print("What Flavor: ");
         String flavor = myScanner.nextLine();
-        System.out.println("Price: ");
-        double price = myScanner.nextDouble();
-        myScanner.nextLine();
 
-        Drink drink = new Drink(name,price,size,flavor);
+        Drink drink = new Drink(0.0,size,flavor);
         order.addItem(drink);
         System.out.println("Drink placed!");
 
     }
 
     private void chipsSalsa() {
-        System.out.println("Name: ");
-        String name = myScanner.nextLine();
-        System.out.println("Salsa choice: ");
+        System.out.println("Salsa: ");
         String salsaType = myScanner.nextLine();
-        System.out.println("Price: ");
-        double price = myScanner.nextDouble();
-        myScanner.nextLine();
 
-        ChipsSalsa side = new ChipsSalsa(name, price, salsaType);
+        ChipsSalsa side = new ChipsSalsa(0.0, salsaType);
         order.addItem(side);
         System.out.println("Chips & Salsa added!");
     }
@@ -145,12 +129,9 @@ public class UserInterface {
         System.out.println("Confirm order? (Yes/No)");
         String confirm = myScanner.nextLine();
         if (confirm.equalsIgnoreCase("yes")) {
-            StringBuilder details = new StringBuilder();
-            order.getItems()
-                    .forEach(item -> details.append(item.getDescription()).append("\n"));
-                    details.append("Total: $").append(order.getTotalPrice());
-            receiptManager.saveReceipt(details.toString());
-            System.out.println("Order Done! Thanks!");
+            String receipt = order.getOrderDetails();
+            receiptManager.saveReceipt(receipt);
+            System.out.println("Order Done! Thanks for eating at Jays Tacos-licious!");
         } else {
             System.out.println("Order cancelled!");
         }

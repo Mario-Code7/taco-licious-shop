@@ -31,20 +31,13 @@ public class Order {
                 .sum();
     }
 
+
     public void displayOrder() {
         System.out.println(getOrderDetails());
-//        if (items.isEmpty()) {
-//            System.out.println("Your order is empty!");
-//        } else {
-//            System.out.println("\n ***** Order Summary *****");
-//            items.stream()
-//                    .map(MenuItem::getDescription)
-//                    .forEach(System.out::println);
-//            System.out.println("Total: $" + getTotalPrice());
     }
 
     public String getOrderDetails() {
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder("Your Taco Order:\n");
         items.forEach(item -> stringBuilder.append(item).append("\n"));
         stringBuilder.append("\nTotal: $").append(String.format("%.2f", getTotalPrice()));
         return stringBuilder.toString();

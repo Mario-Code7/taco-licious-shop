@@ -1,5 +1,6 @@
 package com.pluralsight.tacos.data;
 
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -12,9 +13,8 @@ public class ReceiptManager {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd-hhmmss");
         String fileName = "receipt-" + now.format(formatter) + ".txt";
 
-        try
-                (FileWriter fileWriter = new FileWriter(fileName)) {
-            fileWriter.write(orderDetails);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            writer.write(orderDetails);
             System.out.println("Receipt saved to " + fileName);
         } catch (IOException e) {
             System.out.println("Error saving receipt: " + e.getMessage());

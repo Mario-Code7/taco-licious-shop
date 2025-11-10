@@ -3,9 +3,14 @@ package com.pluralsight.tacos.model;
 public class ChipsSalsa extends MenuItem {
     private String salsaType;
 
-    public ChipsSalsa(String name, double price, String salsaType) {
-        super(name, price);
+    public ChipsSalsa(double price, String salsaType) {
+        super(price);
         this.salsaType = salsaType;
+    }
+
+    @Override
+    public double getPrice() {
+        return 1.50;
     }
 
     public String getSalsaType() {
@@ -17,7 +22,7 @@ public class ChipsSalsa extends MenuItem {
     }
 
     @Override
-    public String getDescription() {
-        return getName() + " | Salsa: " + getSalsaType() + " | Price: $" + getPrice();
+    public String toString() {
+        return  "Chips & " + salsaType + " Salsa - $" + String.format("%.2f", getPrice());
     }
 }

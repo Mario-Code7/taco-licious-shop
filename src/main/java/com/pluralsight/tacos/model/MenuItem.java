@@ -3,11 +3,9 @@ package com.pluralsight.tacos.model;
 import com.pluralsight.tacos.data.PricedItem;
 
 public abstract class  MenuItem implements PricedItem {
-    private String name;
     private double price;
 
-    public MenuItem(String name, double price) {
-        this.name = name;
+    public MenuItem(double price) {
         this.price = price;
     }
 
@@ -20,16 +18,11 @@ public abstract class  MenuItem implements PricedItem {
         this.price = price;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @Override
     public String toString() {
-        return name + " -$" + String.format("%.2f", getPrice());
+        final StringBuilder sb = new StringBuilder("MenuItem{");
+        sb.append("price=").append(price);
+        sb.append('}');
+        return sb.toString();
     }
 }

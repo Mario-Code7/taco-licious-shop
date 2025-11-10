@@ -1,7 +1,6 @@
 package com.pluralsight.tacos.model;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Taco extends MenuItem {
     private String size;
@@ -9,8 +8,8 @@ public class Taco extends MenuItem {
     private boolean deepFried;
     private List<String> toppings;
 
-    public Taco(String name, double price, String size, String shell, boolean deepFried, List<String> toppings) {
-        super(name, price);
+    public Taco(double price, String size, String shell, boolean deepFried, List<String> toppings) {
+        super(price);
         this.size = size;
         this.shell = shell;
         this.deepFried = deepFried;
@@ -34,10 +33,17 @@ public class Taco extends MenuItem {
                 price += switch (size.toLowerCase()) {
                     case "single" -> 1.00;
                     case "3-taco" -> 2.00;
+                    case "burrito" -> 3.00;
+                    default -> 0;
+                };
+            } else if (topping.toLowerCase().contains("extra meat")) {
+                price += switch (size.toLowerCase()) {
+                    case "single" -> 0.50;
+                    case "3-taco" -> 1.00;
                     case "burrito" -> 1.50;
                     default -> 0;
                 };
-            } else if (topping.toLowerCase().contains("cheese")) {
+            }else if (topping.toLowerCase().contains("cheese")) {
                 price += switch (size.toLowerCase()) {
                     case "single" -> 0.75;
                     case "3-taco" -> 1.50;
@@ -79,7 +85,6 @@ public class Taco extends MenuItem {
     }
 
     public void setToppings(List<String> toppings) {
-        toppings = toppings;
     }
 
     @Override
