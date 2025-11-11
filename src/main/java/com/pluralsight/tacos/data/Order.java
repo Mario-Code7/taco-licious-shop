@@ -58,7 +58,7 @@ public class Order {
         }
         stringBuilder.append("\n------------------------------------------------------\n");
         stringBuilder.append(String.format("Total: $%.2f\n", getTotalPrice()));
-        stringBuilder.append("Ruba ba da da thanks for the grub, come back again soon!\n");
+        stringBuilder.append("Ruba ba da da Thanks for the Grub, Come Back Again Soon!\n");
         stringBuilder.append("========================================================\n");
 
         return stringBuilder.toString();
