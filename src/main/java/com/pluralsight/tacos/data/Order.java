@@ -33,13 +33,34 @@ public class Order {
 
 
     public void displayOrder() {
-        System.out.println(getOrderDetails());
+        if (items.isEmpty()) {
+            System.out.println("Order is empty!");
+        } else {
+            System.out.println(getOrderDetails());
+        }
     }
 
     public String getOrderDetails() {
-        StringBuilder stringBuilder = new StringBuilder("Your Taco Order:\n");
-        items.forEach(item -> stringBuilder.append(item).append("\n"));
-        stringBuilder.append("\nTotal: $").append(String.format("%.2f", getTotalPrice()));
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("======================================================\n");
+        stringBuilder.append("                 Taco-licious Receipt                 \n");
+        stringBuilder.append("======================================================\n");
+        stringBuilder.append("\n***** Order Summery ****** \n\n");
+
+        int count = 1;
+        for (MenuItem item: items) {
+            stringBuilder.append(count++)
+                    .append(", ")
+                    .append(item.getDescription())
+                    .append(" | $")
+                    .append(String.format("%.2f", item.getPrice()))
+                    .append("\n");
+        }
+        stringBuilder.append("\n------------------------------------------------------\n");
+        stringBuilder.append(String.format("Total: $%.2f\n", getTotalPrice()));
+        stringBuilder.append("Ruba ba da da thanks for the grub, come back again soon!\n");
+        stringBuilder.append("========================================================\n");
+
         return stringBuilder.toString();
     }
 

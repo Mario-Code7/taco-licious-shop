@@ -10,8 +10,9 @@ public class ReceiptManager {
 
     public void saveReceipt(String orderDetails) {
         LocalDateTime now = LocalDateTime.now();
+        String receiptDate = String.format("%d-%d-%d - %s-%s-%s", now.getYear(), now.getMonthValue(), now.getDayOfMonth(), now.getHour(), now.getMinute(), now.getSecond());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd-hhmmss");
-        String fileName = "receipt-" + now.format(formatter) + ".txt";
+        String fileName = "receipt-" + receiptDate + ".txt";
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             writer.write(orderDetails);

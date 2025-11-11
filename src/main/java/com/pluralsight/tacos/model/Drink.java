@@ -37,9 +37,9 @@ public class Drink extends MenuItem {
     public void setFlavor(String flavor) {
         this.flavor = flavor;
     }
-
     @Override
-    public String toString() {
-        return size + " " + flavor + " Drink - $" + String.format("%.2f", getPrice());
+    public String getDescription() {
+        return String.format("Drink (%s,%s)", size, flavor);
     }
+
 }

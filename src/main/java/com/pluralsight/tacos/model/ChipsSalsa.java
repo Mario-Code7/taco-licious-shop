@@ -22,7 +22,7 @@ public class ChipsSalsa extends MenuItem {
     }
 
     @Override
-    public String toString() {
-        return  "Chips & " + salsaType + " Salsa - $" + String.format("%.2f", getPrice());
+    public String getDescription() {
+        return String.format("Chips & Salsa (%s)", salsaType);
     }
 }

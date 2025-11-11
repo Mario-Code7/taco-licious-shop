@@ -25,4 +25,6 @@ public abstract class  MenuItem implements PricedItem {
         sb.append('}');
         return sb.toString();
     }
+
+    public abstract String getDescription();
 }

@@ -50,7 +50,7 @@ public class UserInterface {
             System.out.println("2. Add Drink");
             System.out.println("3. Add Chips & Salsa");
             System.out.println("4. Checkout");
-            System.out.println("0. Exit");
+            System.out.println("0. Cancel Order");
             System.out.print("Enter choice please: ");
 
             choice = myScanner.nextInt();
@@ -71,6 +71,7 @@ public class UserInterface {
                     return;
                 case 0:
                     System.out.println("Order is cancelled.");
+                    break;
                 default:
                     System.out.println("Invalid choice.");
             }
@@ -84,25 +85,37 @@ public class UserInterface {
         String shell = myScanner.nextLine();
 
         List<String>toppings = new ArrayList<>();
-        System.out.print("Enter toppings(leave empty to finish): ");
+        System.out.print("Enter meat(Carne Asada, Al Pastor, Carnitas, Pollo, Chorizo, Pescado): ");
         while (true) {
             String topping = myScanner.nextLine().trim();
-            if (topping.isEmpty()) break;
+            if (topping.isEmpty()) {
+                break;
+            }
             toppings.add(topping);
         }
+
+        System.out.println("Add extra meat? (Y/N): ");
+        boolean extraMeat = myScanner.nextLine().equalsIgnoreCase("Y");
+
+        System.out.println("Add extra cheese? (Y/N): ");
+        boolean extraCheese = myScanner.nextLine().equalsIgnoreCase("Y");
+
         System.out.print("Deep fried Y/N: ");
         boolean deepFried = myScanner.nextLine().equalsIgnoreCase("Y");
 
         Taco taco = new Taco(0.0,size,shell,deepFried,toppings);
-        order.addItem(taco);
+        taco.setExtraMeat(extraMeat);
+        taco.setExtraCheese(extraCheese);
 
+
+        order.addItem(taco);
         System.out.println("Taco placed!");
     }
 
     private void addDrink() {
         System.out.print("Size (Small, Medium, Large): ");
         String size = myScanner.nextLine();
-        System.out.print("What Flavor: ");
+        System.out.print("What flavor: ");
         String flavor = myScanner.nextLine();
 
         Drink drink = new Drink(0.0,size,flavor);
@@ -112,7 +125,7 @@ public class UserInterface {
     }
 
     private void chipsSalsa() {
-        System.out.println("Salsa: ");
+        System.out.println("Sauces (Salsa verde, Salsa roja, Chipotle, Habanero, Mild, Extra hot): ");
         String salsaType = myScanner.nextLine();
 
         ChipsSalsa side = new ChipsSalsa(0.0, salsaType);
