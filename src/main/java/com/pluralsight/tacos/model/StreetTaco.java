@@ -1,7 +1,6 @@
 package com.pluralsight.tacos.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class StreetTaco extends Taco{
@@ -11,7 +10,6 @@ public class StreetTaco extends Taco{
 
     @Override
     public String getDescription() {
-//        return "Signature Taco: Street Taco\n   " + "3 Corn, Corn Torillas, Carne Asada, Onions, Cilantro, Salsa Verde, Lime Wedges";
-        return toString();
+        return "Signature Taco: Street Taco\n   " + "3 Corn, Corn Torillas, Carne Asada, Onions, Cilantro, Salsa Verde, Lime Wedges";
     }
 }
