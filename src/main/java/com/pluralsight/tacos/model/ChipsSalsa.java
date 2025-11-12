@@ -2,10 +2,12 @@ package com.pluralsight.tacos.model;
 
 public class ChipsSalsa extends MenuItem {
     private String salsaType;
+    private String chipType;
 
-    public ChipsSalsa(double price, String salsaType) {
+    public ChipsSalsa(double price, String salsaType, String chipType) {
         super(price);
         this.salsaType = salsaType;
+        this.chipType = chipType;
     }
 
     @Override
@@ -19,6 +21,14 @@ public class ChipsSalsa extends MenuItem {
 
     public void setSalsaType(String salsaType) {
         this.salsaType = salsaType;
+    }
+
+    public String getChipType() {
+        return chipType;
+    }
+
+    public void setChipType(String chipType) {
+        this.chipType = chipType;
     }
 
     @Override

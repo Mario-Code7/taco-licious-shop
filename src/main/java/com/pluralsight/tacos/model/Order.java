@@ -1,6 +1,4 @@
-package com.pluralsight.tacos.data;
-
-import com.pluralsight.tacos.model.MenuItem;
+package com.pluralsight.tacos.model;
 
 import java.util.ArrayList;
 import java.util.List;

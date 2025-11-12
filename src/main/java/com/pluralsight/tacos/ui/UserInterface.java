@@ -1,6 +1,6 @@
 package com.pluralsight.tacos.ui;
 
-import com.pluralsight.tacos.data.Order;
+import com.pluralsight.tacos.model.Order;
 import com.pluralsight.tacos.data.ReceiptManager;
 import com.pluralsight.tacos.model.ChipsSalsa;
 import com.pluralsight.tacos.model.Drink;
@@ -49,7 +49,8 @@ public class UserInterface {
             System.out.println("1. Add Taco");
             System.out.println("2. Add Drink");
             System.out.println("3. Add Chips & Salsa");
-            System.out.println("4. Checkout");
+            System.out.println("4. Add Signature Taco");
+            System.out.println("5. Checkout");
             System.out.println("0. Cancel Order");
             System.out.print("Enter choice please: ");
 
@@ -67,6 +68,9 @@ public class UserInterface {
                     chipsSalsa();
                     break;
                 case 4:
+                    addSignatureTaco();
+                    break;
+                case 5:
                     checkout();
                     return;
                 case 0:
@@ -125,12 +129,23 @@ public class UserInterface {
     }
 
     private void chipsSalsa() {
-        System.out.println("Sauces (Salsa verde, Salsa roja, Chipotle, Habanero, Mild, Extra hot): ");
+        System.out.println("Sauce? (Salsa verde, Salsa roja, Chipotle, Habanero, Mild, Extra hot): ");
         String salsaType = myScanner.nextLine();
 
-        ChipsSalsa side = new ChipsSalsa(0.0, salsaType);
+        System.out.println("Chips? (Doritos nacho cheese, Hot cheetos, Lay's, Frito's Flamin Hot, Torilla chips): ");
+        String chipType = myScanner.nextLine();
+
+        ChipsSalsa side = new ChipsSalsa(0.0, salsaType,chipType);
         order.addItem(side);
         System.out.println("Chips & Salsa added!");
+    }
+
+    private void addSignatureTaco() {
+        System.out.println();
+    }
+
+    private void customizeTaco() {
+
     }
 
     private void checkout() {

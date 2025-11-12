@@ -1,7 +1,5 @@
 package com.pluralsight.tacos.model;
 
-import com.pluralsight.tacos.data.PricedItem;
-
 public abstract class  MenuItem implements PricedItem {
     private double price;
 

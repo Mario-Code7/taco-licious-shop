@@ -1,4 +1,4 @@
-package com.pluralsight.tacos.data;
+package com.pluralsight.tacos.model;
 
 public interface PricedItem {
     double getPrice();
