@@ -1,12 +1,13 @@
 package com.pluralsight.tacos.model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class SuperBurrito extends Taco{
 
     public SuperBurrito(){
-        super(0.0, "Burrito", "flour", false, Arrays.asList("carnitas", "cheddar", "pico de gallo", "lettuce", "tomatoes", "birria dipped"));
+        super(0.0, "Burrito", "flour", false, new ArrayList<>(List.of("carnitas", "cheddar", "pico de gallo", "lettuce", "tomatoes", "birria dipped")));
     }
 
     @Override

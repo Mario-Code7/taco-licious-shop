@@ -41,5 +41,4 @@ public class Drink extends MenuItem {
     public String getDescription() {
         return String.format("Drink (%s,%s)", size, flavor);
     }
-
 }

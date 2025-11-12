@@ -17,35 +17,55 @@ public class Taco extends MenuItem {
         this.deepFried = deepFried;
         this.toppings = toppings;
     }
+
     @Override
     public double getPrice() {
-        double price = switch (size.toLowerCase()) {
-            case "single" -> 3.50;
-            case "3-taco" -> 9.00;
-            case "burrito" -> 8.50;
-            default -> 0;
-        };
+        double price = 0.0;
 
-        double meatPrice = 0;
-        double cheesePrice = 0;
+        switch (size) {
+            case "single":
+                price = 3.50;
+            case "3-taco":
+                price = 9.00;
+            case "burrito":
+                price = 8.50;
+            default:
+                price = 3.50;
+        }
 
-        if (extraMeat) {
-            meatPrice = switch (size.toLowerCase()) {
-                case "single" -> 0.50;
-                case "3-taco" -> 1.00;
-                case "burrito" -> 1.50;
-                default -> 0.0;
-            };
+        switch (size) {
+            case "single":
+                if (extraMeat) price += 0.50;
+                if (extraCheese) price += 0.30;
+                break;
+            case "3-taco":
+                if (extraMeat) price += 1.00;
+                if (extraCheese) price += 0.50;
+                break;
+            case "burrito":
+                if (extraMeat) price += 1.50;
+                if (extraCheese) price += 0.90;
+                break;
         }
-        if (extraCheese) {
-            cheesePrice = switch (size.toLowerCase()) {
-                case "single" -> 0.30;
-                case "3-taco" -> 0.60;
-                case "burrito" -> 0.90;
-                default -> 0.0;
-            };
+
+
+//        if (extraCheese) {
+//            cheesePrice = switch (size.toLowerCase()) {
+//                case "single" -> 0.30;
+//                case "3-taco" -> 0.60;
+//                case "burrito" -> 0.90;
+//                default -> 0.0;
+//            };
+
+        if (deepFried) {
+            price += 0.50;
         }
-        return price + meatPrice + cheesePrice;
+        if (this instanceof StreetTaco) {
+            price += 9.00;
+        } else if (this instanceof SuperBurrito) {
+            price += 8.50;
+        }
+        return price;
     }
 
     public void setExtraMeat(boolean extraMeat) {
@@ -89,7 +109,27 @@ public class Taco extends MenuItem {
 
     @Override
     public String getDescription() {
-        return String.format("Taco (" + size + ", " + shell + ", Deep Fried: " + deepFried + (extraMeat ? ", Extra Meat" : "") + (extraCheese ? ", Extra Cheese" : "") + ") | $" + getPrice());
+//        return String.format("Taco (" + size + ", " + shell + ", Deep Fried: " + deepFried + (extraMeat ? ", Extra Meat" : "") + (extraCheese ? ", Extra Cheese" : "") + ") | $" + getPrice());
+        StringBuilder description = new StringBuilder();
+        description.append("Taco [")
+                .append(size)
+                .append(", Shell: ")
+                .append(shell);
+        if (deepFried){
+            description.append(", Deep Fried");
+        }
+        if (!toppings.isEmpty()) {
+            description.append(", Toppings: ")
+                    .append(String.join(", ", toppings));
+        }
+        if (extraMeat){
+            description.append(", +Extra Meat");
+        }
+        if (extraCheese) {
+            description.append(", + Extra cheese");
+        }
+        description.append("]");
 
+        return toString();
     }
 }

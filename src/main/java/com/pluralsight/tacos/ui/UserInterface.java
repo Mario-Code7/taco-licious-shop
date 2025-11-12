@@ -1,10 +1,7 @@
 package com.pluralsight.tacos.ui;
 
-import com.pluralsight.tacos.model.Order;
+import com.pluralsight.tacos.model.*;
 import com.pluralsight.tacos.data.ReceiptManager;
-import com.pluralsight.tacos.model.ChipsSalsa;
-import com.pluralsight.tacos.model.Drink;
-import com.pluralsight.tacos.model.Taco;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -141,10 +138,65 @@ public class UserInterface {
     }
 
     private void addSignatureTaco() {
-        System.out.println();
+        System.out.println("\nSelect a Signature Taco:");
+        System.out.println("1. Street Taco");
+        System.out.println("2. Super Burrito");
+        System.out.print("Enter choice: ");
+
+        int choice = myScanner.nextInt();
+        myScanner.nextLine();
+
+        Taco taco;
+        switch (choice) {
+            case 1:
+                taco = new StreetTaco();
+                break;
+            case 2:
+                taco = new SuperBurrito();
+                break;
+            default:
+                System.out.println("Invalid choice!");
+                return;
+        }
+
+        System.out.println("Would you like to customize toppings? (Y/N): ");
+        if (myScanner.nextLine().equalsIgnoreCase("Y")) {
+            customizeTaco(taco);
+        }
+
+        order.addItem(taco);
+        System.out.println("Signature Taco added to order!");
     }
 
-    private void customizeTaco() {
+    private void customizeTaco(Taco taco) {
+        System.out.println("\nCurrent toppings: " + taco.getToppings());
+        boolean changing = true;
+
+        while(changing) {
+            System.out.println("\n1. Add topping");
+            System.out.println("2. Remove topping");
+            System.out.println("0. Completed");
+            System.out.print("Choose: ");
+            int option = myScanner.nextInt();
+            myScanner.nextLine();
+
+            switch (option) {
+                case 1:
+                    System.out.print("Enter a topping: ");
+                    taco.getToppings().add(myScanner.nextLine());
+                    break;
+                case 2:
+                    System.out.print("Enter topping to remove: ");
+                    String remove = myScanner.nextLine();
+                    taco.getToppings().remove(remove);
+                    break;
+                case 0:
+                    changing = false;
+                    break;
+                default:
+                    System.out.println("Invalid choice!");
+            }
+        }
 
     }
 

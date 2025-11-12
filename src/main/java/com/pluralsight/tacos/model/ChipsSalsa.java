@@ -33,6 +33,6 @@ public class ChipsSalsa extends MenuItem {
 
     @Override
     public String getDescription() {
-        return String.format("Chips & Salsa (%s)", salsaType);
+        return String.format("Chips & Salsa (%s, %s)", chipType, salsaType);
     }
 }
