@@ -65,10 +65,12 @@ java com.pluralsight.Program
 
 ## Screenshot
 1. Taco Sreen
-   <img width="856" height="216" alt="Screenshot 2025-11-12 144917" src="https://github.com/user-attachments/assets/5750c5fb-4cbb-4114-9269-920ece9634a8" />
+<img width="856" height="216" alt="Screenshot 2025-11-12 144917" src="https://github.com/user-attachments/assets/5750c5fb-4cbb-4114-9269-920ece9634a8" />
+
 2. Food Screen
-   <img width="800" height="202" alt="Screenshot 2025-11-12 145013" src="https://github.com/user-attachments/assets/a8b4f4b0-02f7-4a14-955e-5e02a0ffdc51" />
+<img width="800" height="202" alt="Screenshot 2025-11-12 145013" src="https://github.com/user-attachments/assets/a8b4f4b0-02f7-4a14-955e-5e02a0ffdc51" />
+
 3. Signature Taco Screen
-   <img width="842" height="150" alt="Screenshot 2025-11-12 145228" src="https://github.com/user-attachments/assets/0dbd0e27-2aeb-4a47-9a66-77bd45d8792a" />
+<img width="842" height="150" alt="Screenshot 2025-11-12 145228" src="https://github.com/user-attachments/assets/0dbd0e27-2aeb-4a47-9a66-77bd45d8792a" />
 
 
