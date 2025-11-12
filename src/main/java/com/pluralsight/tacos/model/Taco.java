@@ -22,18 +22,22 @@ public class Taco extends MenuItem {
     public double getPrice() {
         double price = 0.0;
 
-        switch (size) {
+        switch (size.toLowerCase()) {
             case "single":
                 price = 3.50;
+                break;
             case "3-taco":
                 price = 9.00;
+                break;
             case "burrito":
                 price = 8.50;
+                break;
             default:
-                price = 3.50;
+                price = 0.0;
+                break;
         }
 
-        switch (size) {
+        switch (size.toLowerCase()) {
             case "single":
                 if (extraMeat) price += 0.50;
                 if (extraCheese) price += 0.30;
@@ -105,6 +109,7 @@ public class Taco extends MenuItem {
     }
 
     public void setToppings(List<String> toppings) {
+        this.toppings = toppings;
     }
 
     @Override
@@ -130,6 +135,6 @@ public class Taco extends MenuItem {
         }
         description.append("]");
 
-        return toString();
+        return description.toString();
     }
 }
