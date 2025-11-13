@@ -54,10 +54,10 @@ public class UserInterface {
             myScanner.nextLine();
 
             switch (choice) {
-                case 1 -> addTaco();
-                case 2 ->addDrink();
+                case 1 -> orderTaco();
+                case 2 ->orderDrink();
                 case 3 ->chipsSalsa();
-                case 4 -> addSignatureTaco();
+                case 4 -> orderSignatureTaco();
                 case 5 -> {
                     checkout();
                     return;
@@ -68,7 +68,7 @@ public class UserInterface {
         } while (choice != 0);
     }
 
-    private void addTaco() {
+    private void orderTaco() {
         System.out.print("Size (Single, 3-taco, burrito): ");
         String size = myScanner.nextLine();
 
@@ -103,7 +103,7 @@ public class UserInterface {
         System.out.println("Taco placed!");
     }
 
-    private void addDrink() {
+    private void orderDrink() {
         System.out.print("Size (Small, Medium, Large): ");
         String size = myScanner.nextLine();
         System.out.print("What flavor: ");
@@ -127,7 +127,7 @@ public class UserInterface {
         System.out.println("Chips & Salsa added!");
     }
 
-    private void addSignatureTaco() {
+    private void orderSignatureTaco() {
         System.out.println("\n*************************************");
         System.out.println("\nSelect a Signature Taco:");
         System.out.println("1. Street Taco");
@@ -152,42 +152,40 @@ public class UserInterface {
 
         System.out.println("Would you like to customize toppings? (Y/N): ");
         if (myScanner.nextLine().equalsIgnoreCase("Y")) {
-            customizeTaco(taco);
+            orderCustomizeTaco(taco);
         }
 
         order.addItem(taco);
         System.out.println("Signature Taco added to order!");
     }
 
-    private void customizeTaco(Taco taco) {
-        System.out.println("\nCurrent toppings: " + taco.getToppings());
+    private void orderCustomizeTaco(Taco taco) {
+        System.out.println("\nStandard Toppings: " + taco.getToppings());
+        int choose;
         boolean change = true;
 
-        while (change) {
+        do {
             System.out.println("\n1. Add topping");
             System.out.println("2. Remove topping");
             System.out.println("0. Finished");
             System.out.print("Choose: ");
-            int choose = myScanner.nextInt();
+            choose = myScanner.nextInt();
             myScanner.nextLine();
 
             switch (choose) {
-                case 1:
-                    System.out.print("Enter a topping: ");
+                case 1 -> {
+                    System.out.print("Enter topping: ");
                     taco.getToppings().add(myScanner.nextLine());
-                    break;
-                case 2:
-                    System.out.print("Enter topping to remove: ");
+                }
+                case 2 -> {
+                    System.out.print("Enter topping:  ");
                     String remove = myScanner.nextLine();
                     taco.getToppings().remove(remove);
-                    break;
-                case 0:
-                    change = false;
-                    break;
-                default:
-                    System.out.println("Invalid choice!");
+                }
+                case 0 -> change = false;
+                default -> System.out.println("Invalid choice!");
             }
-        }
+        }while (change);
 
     }
 
