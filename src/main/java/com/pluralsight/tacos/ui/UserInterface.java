@@ -70,7 +70,7 @@ public class UserInterface {
 
     private void orderTaco() {
         System.out.print("Enter Meat(Carne Asada, Al Pastor, Carnitas, Pollo, Chorizo, Pescado): ");
-        myScanner.nextLine();
+        String meat = myScanner.nextLine();
         System.out.print("Size (Single, 3-taco, burrito): ");
         String size = myScanner.nextLine();
 
@@ -96,7 +96,7 @@ public class UserInterface {
         System.out.print("Deep fried Y/N: ");
         boolean deepFried = myScanner.nextLine().equalsIgnoreCase("Y");
 
-        Taco taco = new Taco(0.0, size, shell, deepFried, toppings);
+        Taco taco = new Taco(meat,0.0, size, shell, deepFried, toppings);
         taco.setExtraMeat(extraMeat);
         taco.setExtraCheese(extraCheese);
 

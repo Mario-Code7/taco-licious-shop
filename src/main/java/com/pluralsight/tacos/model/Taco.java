@@ -3,6 +3,7 @@ package com.pluralsight.tacos.model;
 import java.util.List;
 
 public class Taco extends MenuItem {
+    private String meat;
     private String size;
     private String shell;
     private boolean deepFried;
@@ -10,8 +11,9 @@ public class Taco extends MenuItem {
     private boolean extraMeat;
     private boolean extraCheese;
 
-    public Taco(double price, String size, String shell, boolean deepFried, List<String> toppings) {
+    public Taco(String meat,double price, String size, String shell, boolean deepFried, List<String> toppings) {
         super(price);
+        this.meat = meat;
         this.size = size;
         this.shell = shell;
         this.deepFried = deepFried;
@@ -62,6 +64,9 @@ public class Taco extends MenuItem {
     public void setExtraCheese(boolean extraCheese) {
         this.extraCheese = extraCheese;
     }
+    public String getMeat(String meat){
+        return meat;
+    }
 
     public String getSize() {
         return size;
@@ -106,7 +111,9 @@ public class Taco extends MenuItem {
     @Override
     public String getDescription() {
         StringBuilder description = new StringBuilder();
-        description.append("Order [")
+        description.append("Food [")
+                .append(meat)
+                .append(", Size:")
                 .append(size)
                 .append(", Shell: ")
                 .append(shell);
