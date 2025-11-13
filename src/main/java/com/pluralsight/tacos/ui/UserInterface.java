@@ -146,7 +146,7 @@ public class UserInterface {
                 taco = new SuperBurrito();
                 break;
             default:
-                System.out.println("Invalid choice!");
+                System.out.println("Invalid choice.");
                 return;
         }
 
