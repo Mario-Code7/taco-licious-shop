@@ -12,6 +12,7 @@ public class UserInterface {
     private Order order;
     private final ReceiptManager receiptManager = new ReceiptManager();
 
+
     public void begin() {
         int choice;
         do {
