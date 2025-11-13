@@ -195,13 +195,15 @@ public class UserInterface {
 
     private void checkout() {
         if (order == null || order.isEmpty()) {
-            System.out.println("No items in the order in checkout");
+            System.out.println("Cart empty!");
             return;
         }
         order.displayOrder();
+
+
         System.out.println("Confirm order? (Yes/No)");
-        String confirm = myScanner.nextLine();
-        if (confirm.equalsIgnoreCase("yes")) {
+        String confirmOrder = myScanner.nextLine();
+        if (confirmOrder.equalsIgnoreCase("yes")) {
             String receipt = order.getOrderDetails();
             receiptManager.saveReceipt(receipt);
             System.out.println("Order Done! Thanks for eating at Jays Tacos-licious!");

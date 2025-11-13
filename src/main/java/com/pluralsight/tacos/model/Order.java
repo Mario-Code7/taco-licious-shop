@@ -32,7 +32,7 @@ public class Order {
 
     public void displayOrder() {
         if (items.isEmpty()) {
-            System.out.println("Order is empty!");
+            System.out.println("Cart empty!");
         } else {
             System.out.println(getOrderDetails());
         }
