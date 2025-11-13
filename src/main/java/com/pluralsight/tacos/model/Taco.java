@@ -23,18 +23,10 @@ public class Taco extends MenuItem {
         double price = 0.0;
 
         switch (size.toLowerCase()) {
-            case "single":
-                price = 3.50;
-                break;
-            case "3-taco":
-                price = 9.00;
-                break;
-            case "burrito":
-                price = 8.50;
-                break;
-            default:
-                price = 0.0;
-                break;
+            case "single" -> price = 3.50;
+            case "3-taco" -> price = 9.00;
+            case "burrito" -> price = 8.50;
+            default -> price = 0.0;
         }
 
         switch (size.toLowerCase()) {

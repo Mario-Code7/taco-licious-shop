@@ -14,7 +14,7 @@ public class UserInterface {
 
 
     public void begin() {
-        while(true) {
+        while (true) {
             System.out.println("\n****************************");
             System.out.println("      Taco-licious Shop        ");
             System.out.println("****************************");
@@ -30,7 +30,7 @@ public class UserInterface {
             } else if (choice == 0) {
                 System.out.println("See ya!");
                 return;
-            }else {
+            } else {
                 System.out.println("Invalid choice!");
             }
         }
@@ -40,9 +40,10 @@ public class UserInterface {
         order = new Order();
         int choice;
         do {
-            System.out.println("\n****************************");
+            System.out.println("\n============================");
             System.out.println("         Food Menu        ");
-            System.out.println("****************************");
+            System.out.println("============================");
+
             System.out.println("1. Add Taco");
             System.out.println("2. Add Drink");
             System.out.println("3. Add Chips & Salsa");
@@ -55,26 +56,16 @@ public class UserInterface {
             myScanner.nextLine();
 
             switch (choice) {
-                case 1:
-                    addTaco();
-                    break;
-                case 2:
-                    addDrink();
-                    break;
-                case 3:
-                    chipsSalsa();
-                    break;
-                case 4:
-                    addSignatureTaco();
-                    break;
-                case 5:
+                case 1 -> addTaco();
+                case 2 ->addDrink();
+                case 3 ->chipsSalsa();
+                case 4 -> addSignatureTaco();
+                case 5 -> {
                     checkout();
                     return;
-                case 0:
-                    System.out.println("Order is cancelled.");
-                    break;
-                default:
-                    System.out.println("Invalid choice.");
+                }
+                case 0 -> System.out.println("Order is cancelled!");
+                default -> System.out.println("Invalid choice.");
             }
         } while (choice != 0);
     }
@@ -86,7 +77,7 @@ public class UserInterface {
         System.out.print("Shell (Corn, flour, Hard shell, bowl): ");
         String shell = myScanner.nextLine();
 
-        List<String>toppings = new ArrayList<>();
+        List<String> toppings = new ArrayList<>();
         System.out.print("Enter meat(Carne Asada, Al Pastor, Carnitas, Pollo, Chorizo, Pescado): ");
         while (true) {
             String topping = myScanner.nextLine().trim();
@@ -105,7 +96,7 @@ public class UserInterface {
         System.out.print("Deep fried Y/N: ");
         boolean deepFried = myScanner.nextLine().equalsIgnoreCase("Y");
 
-        Taco taco = new Taco(0.0,size,shell,deepFried,toppings);
+        Taco taco = new Taco(0.0, size, shell, deepFried, toppings);
         taco.setExtraMeat(extraMeat);
         taco.setExtraCheese(extraCheese);
 
@@ -120,7 +111,7 @@ public class UserInterface {
         System.out.print("What flavor: ");
         String flavor = myScanner.nextLine();
 
-        Drink drink = new Drink(0.0,size,flavor);
+        Drink drink = new Drink(0.0, size, flavor);
         order.addItem(drink);
         System.out.println("Drink placed!");
 
@@ -133,7 +124,7 @@ public class UserInterface {
         System.out.println("Chips? (Doritos nacho cheese, Hot cheetos, Lay's, Frito's Flamin Hot, Torilla chips): ");
         String chipType = myScanner.nextLine();
 
-        ChipsSalsa side = new ChipsSalsa(0.0, salsaType,chipType);
+        ChipsSalsa side = new ChipsSalsa(0.0, salsaType, chipType);
         order.addItem(side);
         System.out.println("Chips & Salsa added!");
     }
@@ -174,10 +165,10 @@ public class UserInterface {
         System.out.println("\nCurrent toppings: " + taco.getToppings());
         boolean change = true;
 
-        while(change) {
+        while (change) {
             System.out.println("\n1. Add topping");
             System.out.println("2. Remove topping");
-            System.out.println("0. Completed");
+            System.out.println("0. Finished");
             System.out.print("Choose: ");
             int choose = myScanner.nextInt();
             myScanner.nextLine();
