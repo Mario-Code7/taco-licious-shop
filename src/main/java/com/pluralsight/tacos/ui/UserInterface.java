@@ -14,7 +14,8 @@ public class UserInterface {
 
 
     public void begin() {
-        while (true) {
+        int choice;
+        do {
             System.out.println("\n****************************");
             System.out.println("      Taco-licious Shop        ");
             System.out.println("****************************");
@@ -22,18 +23,15 @@ public class UserInterface {
             System.out.println("0. Exit");
             System.out.print("Enter choice please: ");
 
-            int choice = myScanner.nextInt();
+            choice = myScanner.nextInt();
             myScanner.nextLine();
 
-            if (choice == 1) {
-                startNewOrder();
-            } else if (choice == 0) {
-                System.out.println("See ya!");
-                return;
-            } else {
-                System.out.println("Invalid choice!");
+            switch (choice) {
+                case 1 -> startNewOrder();
+                case 0 -> System.out.println("See ya again!");
+                default -> System.out.println("Invalid choice.");
             }
-        }
+        } while (choice != 0);
     }
 
     private void startNewOrder() {
@@ -210,5 +208,6 @@ public class UserInterface {
         } else {
             System.out.println("Order cancelled!");
         }
+        myScanner.close();
     }
 }
