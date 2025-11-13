@@ -82,7 +82,8 @@ public class UserInterface {
     private void addTaco() {
         System.out.print("Size (Single, 3-taco, burrito): ");
         String size = myScanner.nextLine();
-        System.out.print("Shell(Corn, flour, Hard shell, bowl): ");
+
+        System.out.print("Shell (Corn, flour, Hard shell, bowl): ");
         String shell = myScanner.nextLine();
 
         List<String>toppings = new ArrayList<>();
@@ -138,6 +139,7 @@ public class UserInterface {
     }
 
     private void addSignatureTaco() {
+        System.out.println("\n*************************************");
         System.out.println("\nSelect a Signature Taco:");
         System.out.println("1. Street Taco");
         System.out.println("2. Super Burrito");
@@ -170,17 +172,17 @@ public class UserInterface {
 
     private void customizeTaco(Taco taco) {
         System.out.println("\nCurrent toppings: " + taco.getToppings());
-        boolean changing = true;
+        boolean change = true;
 
-        while(changing) {
+        while(change) {
             System.out.println("\n1. Add topping");
             System.out.println("2. Remove topping");
             System.out.println("0. Completed");
             System.out.print("Choose: ");
-            int option = myScanner.nextInt();
+            int choose = myScanner.nextInt();
             myScanner.nextLine();
 
-            switch (option) {
+            switch (choose) {
                 case 1:
                     System.out.print("Enter a topping: ");
                     taco.getToppings().add(myScanner.nextLine());
@@ -191,7 +193,7 @@ public class UserInterface {
                     taco.getToppings().remove(remove);
                     break;
                 case 0:
-                    changing = false;
+                    change = false;
                     break;
                 default:
                     System.out.println("Invalid choice!");
