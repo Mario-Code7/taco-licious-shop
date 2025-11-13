@@ -10,6 +10,7 @@ public class StreetTaco extends Taco{
 
     @Override
     public String getDescription() {
-        return "Signature Taco: Street Taco\n   " + "3 Corn, Corn Torillas, Carne Asada, Onions, Cilantro, Salsa Verde, Lime Wedges";
+        return "Signature Taco: Street Taco\n   " + super.getDescription();
     }
+
 }

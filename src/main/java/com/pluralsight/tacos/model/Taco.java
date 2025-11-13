@@ -44,15 +44,6 @@ public class Taco extends MenuItem {
                 break;
         }
 
-
-//        if (extraCheese) {
-//            cheesePrice = switch (size.toLowerCase()) {
-//                case "single" -> 0.30;
-//                case "3-taco" -> 0.60;
-//                case "burrito" -> 0.90;
-//                default -> 0.0;
-//            };
-
         if (deepFried) {
             price += 0.50;
         }
@@ -100,15 +91,22 @@ public class Taco extends MenuItem {
         return toppings;
     }
 
+    public void addTopping(String topping) {
+        toppings.add(topping);
+    }
+
+    public void removeTopping(String topping) {
+        toppings.remove(topping);
+    }
+
     public void setToppings(List<String> toppings) {
         this.toppings = toppings;
     }
 
     @Override
     public String getDescription() {
-//        return String.format("Taco (" + size + ", " + shell + ", Deep Fried: " + deepFried + (extraMeat ? ", Extra Meat" : "") + (extraCheese ? ", Extra Cheese" : "") + ") | $" + getPrice());
         StringBuilder description = new StringBuilder();
-        description.append("Taco [")
+        description.append("Order [")
                 .append(size)
                 .append(", Shell: ")
                 .append(shell);

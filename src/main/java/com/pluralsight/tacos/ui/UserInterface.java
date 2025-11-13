@@ -69,6 +69,8 @@ public class UserInterface {
     }
 
     private void orderTaco() {
+        System.out.print("Enter Meat(Carne Asada, Al Pastor, Carnitas, Pollo, Chorizo, Pescado): ");
+        myScanner.nextLine();
         System.out.print("Size (Single, 3-taco, burrito): ");
         String size = myScanner.nextLine();
 
@@ -76,7 +78,7 @@ public class UserInterface {
         String shell = myScanner.nextLine();
 
         List<String> toppings = new ArrayList<>();
-        System.out.print("Enter meat(Carne Asada, Al Pastor, Carnitas, Pollo, Chorizo, Pescado): ");
+        System.out.print("Enter Toppings(Lettuce, Cilantro, Onions, Tomatoes, Jalapenos, Radishes, Pico de Gallo, Guacamole, Corn): ");
         while (true) {
             String topping = myScanner.nextLine().trim();
             if (topping.isEmpty()) {
@@ -141,16 +143,22 @@ public class UserInterface {
         switch (choice) {
             case 1:
                 taco = new StreetTaco();
+                System.out.println("==========================================================================");
+                System.out.println("|| Street Taco (includes): Carne asada, Onions, Salsa verde, Lime wedges ||");
+                System.out.println("===========================================================================");
                 break;
             case 2:
                 taco = new SuperBurrito();
+                System.out.println("=================================================================================================");
+                System.out.println("|| Super Burrito (includes): Carnitas, Cheddar, Pico de gallo, Lettuce, Tomatoes, Birria dipped ||");
+                System.out.println("=================================================================================================");
                 break;
             default:
                 System.out.println("Invalid choice.");
                 return;
         }
 
-        System.out.println("Would you like to customize toppings? (Y/N): ");
+        System.out.println("Would you like to customize? (Y/N): ");
         if (myScanner.nextLine().equalsIgnoreCase("Y")) {
             orderCustomizeTaco(taco);
         }
@@ -160,7 +168,9 @@ public class UserInterface {
     }
 
     private void orderCustomizeTaco(Taco taco) {
-        System.out.println("\nStandard Toppings: " + taco.getToppings());
+        System.out.println("================================================================================================================");
+        System.out.println("|| New Toppings: " + "Lettuce, Cilantro, Onions, Tomatoes, Jalapenos, Radishes, Pico de Gallo, Guacamole, Corn ||");
+        System.out.println("================================================================================================================");
         int choose;
         boolean change = true;
 
@@ -175,12 +185,11 @@ public class UserInterface {
             switch (choose) {
                 case 1 -> {
                     System.out.print("Enter topping: ");
-                    taco.getToppings().add(myScanner.nextLine());
+                    taco.addTopping(myScanner.nextLine());
                 }
                 case 2 -> {
                     System.out.print("Enter topping:  ");
-                    String remove = myScanner.nextLine();
-                    taco.getToppings().remove(remove);
+                    taco.removeTopping(myScanner.nextLine());
                 }
                 case 0 -> change = false;
                 default -> System.out.println("Invalid choice!");
@@ -206,6 +215,5 @@ public class UserInterface {
         } else {
             System.out.println("Order cancelled!");
         }
-        myScanner.close();
     }
 }
