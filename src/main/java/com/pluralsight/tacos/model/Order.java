@@ -41,7 +41,7 @@ public class Order {
     public String getOrderDetails() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("======================================================\n");
-        stringBuilder.append("                 Taco-licious Receipt                 \n");
+        stringBuilder.append("           \uD83E\uDDFE Taco-licious Receipt \uD83E\uDDFE                  \n");
         stringBuilder.append("======================================================\n");
         stringBuilder.append("\n***** Order Summery ****** \n\n");
 

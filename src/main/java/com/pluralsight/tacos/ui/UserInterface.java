@@ -16,9 +16,10 @@ public class UserInterface {
     public void begin() {
         int choice;
         do {
-            System.out.println("\n****************************");
-            System.out.println("      Taco-licious Shop        ");
-            System.out.println("****************************");
+            System.out.println("\n \uD83C\uDF2E Welcome my friend, use the tablet to order! \uD83C\uDF2E");
+            System.out.println("\n*****************************");
+            System.out.println("✨ Jay's Taco-licious Shop ✨    ");
+            System.out.println("*****************************");
             System.out.println("1. New Order");
             System.out.println("0. Exit");
             System.out.print("Enter choice please: ");
@@ -38,14 +39,14 @@ public class UserInterface {
         order = new Order();
         int choice;
         do {
-            System.out.println("\n============================");
-            System.out.println("         Food Menu        ");
-            System.out.println("============================");
+            System.out.println("\n===========================");
+            System.out.println("   \uD83C\uDF2E  Food Menu \uD83C\uDF2E  ");
+            System.out.println("===========================");
 
-            System.out.println("1. Add Taco");
-            System.out.println("2. Add Drink");
-            System.out.println("3. Add Chips & Salsa");
-            System.out.println("4. Add Signature Taco");
+            System.out.println("1. \uD83C\uDF2E Add Taco");
+            System.out.println("2. \uD83E\uDD64 Add Drink");
+            System.out.println("3. \uD83C\uDF5F Add Chips & Salsa");
+            System.out.println("4. Add Signature Meals");
             System.out.println("5. Checkout");
             System.out.println("0. Cancel Order");
             System.out.print("Enter choice please: ");
@@ -102,7 +103,8 @@ public class UserInterface {
 
 
         order.addItem(taco);
-        System.out.println("Taco placed!");
+        System.out.println();
+        System.out.println("✔ Taco placed!");
     }
 
     private void orderDrink() {
@@ -113,7 +115,7 @@ public class UserInterface {
 
         Drink drink = new Drink(0.0, size, flavor);
         order.addItem(drink);
-        System.out.println("Drink placed!");
+        System.out.println("✔ Drink placed!");
 
     }
 
@@ -126,14 +128,14 @@ public class UserInterface {
 
         ChipsSalsa side = new ChipsSalsa(0.0, salsaType, chipType);
         order.addItem(side);
-        System.out.println("Chips & Salsa added!");
+        System.out.println("✔ Chips & Salsa added!");
     }
 
     private void orderSignatureTaco() {
         System.out.println("\n*************************************");
         System.out.println("\nSelect a Signature Taco:");
-        System.out.println("1. Street Taco");
-        System.out.println("2. Super Burrito");
+        System.out.println("1. \uD83C\uDF2E Street Taco");
+        System.out.println("2. \uD83C\uDF2F Super Burrito");
         System.out.print("Enter choice: ");
 
         int choice = myScanner.nextInt();
@@ -164,7 +166,7 @@ public class UserInterface {
         }
 
         order.addItem(taco);
-        System.out.println("Signature Taco added to order!");
+        System.out.println("✔ Signature Taco added to order!");
     }
 
     private void orderCustomizeTaco(Taco taco) {
