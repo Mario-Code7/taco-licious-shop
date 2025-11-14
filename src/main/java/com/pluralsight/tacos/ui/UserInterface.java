@@ -110,7 +110,7 @@ public class UserInterface {
     private void orderDrink() {
         System.out.print("Size (Small, Medium, Large): ");
         String size = myScanner.nextLine();
-        System.out.print("What flavor: ");
+        System.out.print("What flavor (Pepsi, Dr.Pepper, RC, Horachta, Agua de Jamaica) : ");
         String flavor = myScanner.nextLine();
 
         Drink drink = new Drink(0.0, size, flavor);
